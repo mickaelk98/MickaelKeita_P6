@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const userRoutes = require('./routes/user')
 
 //* connection a la mongoDB via mongoose
-mongoose.connect(`mongodb+srv://${process.env.mongodb_user}:${process.env.mongodb_password}@cluster0.yecz7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+mongoose.connect(`mongodb+srv://${process.env.mongodb_user}:${process.env.mongodb_password}@cluster0.z3t8m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 });
 
 //* intercepte les requete de type json
-app.use(express.json);
+app.use(express.json());
 
 app.use('/api/auth', userRoutes);
 

@@ -7,7 +7,7 @@ exports.signup = (req, res, next) => {
     //* cryptage du mot de passe
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
-            //* creation d'un nouveau utilisateur avec le MDP heshé
+            //* creation d'un nouveau utilisateur avec le MDP hashé
             const user = new User({
                 email: req.body.email,
                 password: hash

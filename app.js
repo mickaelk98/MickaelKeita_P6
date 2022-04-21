@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+const userRoutes = require('./routes/user')
 
 //* connection a la mongoDB via mongoose
 mongoose.connect(`mongodb+srv://${process.env.mongodb_user}:${process.env.mongodb_password}@cluster0.yecz7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
@@ -14,8 +15,6 @@ mongoose.connect(`mongodb+srv://${process.env.mongodb_user}:${process.env.mongod
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 
-//* intercepte les requete de type json
-app.use(express.json);
 
 //* donne l'acces a tout le monde d'utiliser l'api
 app.use((req, res, next) => {
@@ -25,8 +24,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res) => {
-    res.send("Serveur ouvert sur le port: 3000");
-});
+//* intercepte les requete de type json
+app.use(express.json);
+
+app.use('/api/auth', userRoutes);
+
 
 module.exports = app;

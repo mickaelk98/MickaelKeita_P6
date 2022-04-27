@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const sauceCtrl = require('../controllers/sauce')
+const likeCtrl = require('../controllers/like')
 const auth = require('../middleware/auth')
 const multer = require('../middleware/multer-config')
 
@@ -18,5 +19,8 @@ router.get('/', auth, sauceCtrl.getAllSauce)
 
 //* route pour avoire une seul sauce
 router.get('/:id', auth, sauceCtrl.getOneSauce)
+
+//* route pour like et dislike une sauce
+router.post('/:id/like', auth, likeCtrl.likeSauce)
 
 module.exports = router;

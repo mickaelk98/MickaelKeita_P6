@@ -1,21 +1,12 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
+require('./config/db.config')
 const path = require('path')
 const cors = require('cors')
 
 const userRoutes = require('./routes/user')
 const sauceRoutes = require('./routes/sauce')
-
-//* connection a la mongoDB via mongoose
-mongoose.connect(`mongodb+srv://${process.env.mongodb_user}:${process.env.mongodb_password}@cluster0.z3t8m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-    .then(() => console.log('Connexion à MongoDB réussie !'))
-    .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 
 app.use(cors());

@@ -3,7 +3,7 @@ const router = express.Router()
 const sauceCtrl = require('../controllers/sauce')
 const likeCtrl = require('../controllers/like')
 const auth = require('../middleware/auth')
-const multer = require('../middleware/multer-config')
+const multer = require('../config/multer.config')
 
 //* route pour crée une sauce
 router.post('/', auth, multer, sauceCtrl.creatSauce)
